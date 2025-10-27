@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc02gdlxh5qxq"]
+[gd_scene load_steps=3 format=3 uid="uid://cc02gdlxh5qxq"]
 
 [ext_resource type="PackedScene" uid="uid://b48inuv5hib15" path="res://Scenes/player.tscn" id="1_ebmjs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmjs"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="game" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 1044.0
+offset_bottom = 786.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ebmjs")
 
 [node name="player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(452, 286)

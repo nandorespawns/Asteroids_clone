@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b48inuv5hib15"]
+[gd_scene load_steps=5 format=3 uid="uid://b48inuv5hib15"]
 
 [ext_resource type="Script" uid="uid://l67r563f1efq" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dofhidpwej3yy" path="res://Assets/player.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://dk42576qbix7q" path="res://Assets/propulsion.png" id="3_6t5aa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 2.0
 
 [node name="player" type="CharacterBody2D"]
-scale = Vector2(0.898913, 0.493905)
 script = ExtResource("1_cvnsp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.403723, 0.403723)
+[node name="player_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.267742, 0.148731)
 texture = ExtResource("1_v0iea")
 
 [node name="hitbox" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.663182, 0.3684)
 polygon = PackedVector2Array(-36, -36, 36, 0, -36, 36, -22, 21, -22, -22)
+
+[node name="shooting_point_area" type="Area2D" parent="."]
+
+[node name="shooting_point" type="CollisionShape2D" parent="shooting_point_area"]
+position = Vector2(24, 0)
+shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="propulsion" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-19, -1)
+scale = Vector2(0.694992, 0.694992)
+texture = ExtResource("3_6t5aa")
