@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://nihpqhc5g4hi"]
+[gd_scene load_steps=4 format=3 uid="uid://nihpqhc5g4hi"]
 
 [ext_resource type="Script" uid="uid://rnduvbwytsun" path="res://Scripts/projectile.gd" id="1_f8cdk"]
 [ext_resource type="Texture2D" uid="uid://rwxmmiyjhgrv" path="res://Assets/projectile.png" id="2_yr2qt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr2qt"]
+size = Vector2(2, 2)
 
 [node name="projectile" type="Node2D"]
 script = ExtResource("1_f8cdk")
@@ -14,4 +17,12 @@ texture = ExtResource("2_yr2qt")
 wait_time = 3.0
 autostart = true
 
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_yr2qt")
+
 [connection signal="timeout" from="despawn_timer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
