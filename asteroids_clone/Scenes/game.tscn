@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cc02gdlxh5qxq"]
 
-[ext_resource type="PackedScene" uid="uid://b48inuv5hib15" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://dk0qgnyfvus34" path="res://Scenes/game_manager.tscn" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://bn1faeaamtbhn" path="res://Scenes/asteroid_big.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bxe03rydf3esq" path="res://Scenes/asteroid_medium.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://cptitmsgf01tk" path="res://Scenes/asteroid_small.tscn" id="4_3dryh"]
@@ -10,15 +10,14 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="game" type="Node2D"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="bg" type="Panel" parent="."]
 offset_left = -11.0
 offset_top = -11.0
 offset_right = 1044.0
 offset_bottom = 786.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ebmjs")
 
-[node name="player" parent="." instance=ExtResource("1_ebmjs")]
-position = Vector2(452, 286)
+[node name="game_manager" parent="." instance=ExtResource("1_3dryh")]
 
 [node name="asteroid_big" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(629, 216)

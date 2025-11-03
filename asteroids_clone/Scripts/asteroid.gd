@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var asteroid_type :String
 
+
 var speed: int = 100
 var randomx
 var randomy
@@ -26,21 +27,31 @@ func screen_warp():
 	position.y = wrapf(position.y, 0, screen_size.y)
 
 func explode():
-	if asteroid_type == "big":
-		var new_asteroid_medium = AsteroidManager.ASTEROID_MEDIUM.instantiate()
-		var new_asteroid_medium_2 = AsteroidManager.ASTEROID_MEDIUM.instantiate()
-		new_asteroid_medium.position = position
-		new_asteroid_medium_2.position = position
-		get_tree().root.call_deferred("add_child", new_asteroid_medium)
-		get_tree().root.call_deferred("add_child", new_asteroid_medium_2)
-		
-	elif asteroid_type == "medium":
-		var new_asteroid_small = AsteroidManager.ASTEROID_SMALL.instantiate()
-		var new_asteroid_small_2 = AsteroidManager.ASTEROID_SMALL.instantiate()
-		new_asteroid_small.position = position
-		new_asteroid_small_2.position = position
-		get_tree().root.call_deferred("add_child", new_asteroid_small)
-		get_tree().root.call_deferred("add_child", new_asteroid_small_2)
-		
-	else:
-		pass
+	vfx()
+	match asteroid_type:
+		"big":
+			spawn_asteroid("medium")
+			spawn_asteroid("medium")
+		"medium":
+			spawn_asteroid("small")
+			spawn_asteroid("small")
+		_:
+			pass
+
+func spawn_asteroid(asteroid_type):
+	var asteroid
+	match asteroid_type:
+		"medium":
+			asteroid = AsteroidManager.ASTEROID_MEDIUM.instantiate()
+		"small":
+			asteroid = AsteroidManager.ASTEROID_SMALL.instantiate()
+		_:
+			return
+	asteroid.position = position
+	get_tree().root.call_deferred("add_child", asteroid)
+
+func vfx():
+	var explosion = AsteroidManager.EXPLOSION.instantiate()
+	explosion.position = position
+	explosion.emitting = true
+	get_tree().root.call_deferred("add_child", explosion)
