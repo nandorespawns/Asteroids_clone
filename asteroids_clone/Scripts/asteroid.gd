@@ -33,8 +33,10 @@ func explode():
 			spawn_asteroid("medium")
 			spawn_asteroid("medium")
 		"medium":
+			AsteroidManager.asteroid_count += 2
 			spawn_asteroid("small")
 			spawn_asteroid("small")
+			print(AsteroidManager.asteroid_count)
 		_:
 			pass
 

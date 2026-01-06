@@ -20,3 +20,4 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	body.explode()
 	body.queue_free()
 	queue_free()
+	

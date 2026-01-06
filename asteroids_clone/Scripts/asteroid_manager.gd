@@ -5,3 +5,6 @@ var ASTEROID_MEDIUM = load("res://Scenes/asteroid_medium.tscn")
 var ASTEROID_SMALL = load("res://Scenes/asteroid_small.tscn")
 
 var EXPLOSION = load("res://Scenes/explosion.tscn")
+
+
+var asteroid_count :int = 0
